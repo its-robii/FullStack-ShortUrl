@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f4fc;
+  color: #2b2d42;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+nav {
+  width: 100%;
+  background: linear-gradient(90deg, #2b2d42, #4c5c68);
+  padding: 0.8rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  color: #edf2f4;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ef233c;
+}
+
+nav ul li a:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ef233c;
+  transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover:after {
+  width: 100%;
+}
+
+nav ul li a:active {
+  transform: scale(0.95);
+}
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+  padding: 25px;
+  width: 90%;
+  max-width: 600px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.container h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #2b2d42;
+}
+
+.url-input {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.url-input input {
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #cbd5e0;
+  outline: none;
+  font-size: 18px;
+  color: #2b2d42;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background-color: #edf2f4;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.url-input input:focus {
+  border-color: #8d99ae;
+  box-shadow: 0 0 8px rgba(141, 153, 174, 0.5);
+}
+
+button {
+  color: white;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 8px;
+  background: #ef233c;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(239, 35, 60, 0.4);
+}
+
+button:hover {
+  background: #d90429;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.short-link {
+  margin: 40px 0;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.short-link p {
+  font-weight: 600;
+  text-align: center;
+}
+
+.short-link .link {
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: 1px solid #cbd5e0;
+  background-color: #edf2f4;
+  transition: box-shadow 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(203, 213, 224, 0.4);
+}
+
+.short-link .link:hover {
+  box-shadow: 0 6px 12px rgba(203, 213, 224, 0.6);
+}
+
+.short-link a {
+  padding: 10px 15px;
+  color: #0077cc;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.short-link a:hover {
+  color: #005bb5;
+}
+
+.short-link .copy {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #005bb5;
+  background-color: #f0f4fc;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.short-link .copy:hover {
+  background-color: #dfe7f3;
+}
+
+footer {
+  margin: 20px 0;
+  font-size: 0.9rem;
+  color: #8d99ae;
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* nav ul {
+    flex-direction: column;
+    gap: 10px;
+  } */
+
+  .container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .url-input {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .url-input input {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .short-link {
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    padding: 0.5rem 0;
+  }
+
+  /* nav ul {
+    flex-direction: column;
+    padding: 0;
+  } */
+
+  nav ul li a {
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .container h1 {
+    font-size: 2rem;
+  }
+
+  .url-input {
+    flex-direction: column;
+  }
+
+  .url-input input {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .short-link {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+

@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  a {
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f4fc;
+    color: #2b2d42;
+    min-height: 100vh;
+    justify-content: space-between;
+  }
+  
+  nav {
+    width: 100%;
+    background: linear-gradient(90deg, #2b2d42, #4c5c68);
+    padding: 0.8rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+  }
+  
+  nav ul li {
+    position: relative;
+  }
+  
+  nav ul li a {
+    color: #edf2f4;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ef233c;
+  }
+  
+  nav ul li a:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #ef233c;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  nav ul li a:hover:after {
+    width: 100%;
+  }
+  
+  nav ul li a:active {
+    transform: scale(0.95);
+  }
+  
+  .login {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    margin-top: 50px;
+  }
+  
+  .h1 {
+    font-size: 2rem;
+    color: #2b2d42;
+    margin-bottom: 20px;
+  }
+  
+  .login input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background: #edf2f4;
+    transition: border 0.3s, box-shadow 0.3s;
+  }
+  
+  .login input:focus {
+    border-color: #8d99ae;
+    box-shadow: 0 0 8px rgba(141, 153, 174, 0.5);
+  }
+  
+  .log-btn {
+    color: white;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    border-radius: 8px;
+    background: #ef233c !important;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(239, 35, 60, 0.4);
+  }
+  
+  .log-btn:hover {
+    background: #d90429 !important;
+  }
+  
+  .log-btn:active {
+    transform: scale(0.95);
+  }
+  
+  footer {
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: #8d99ae;
+    text-align: center;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    /* nav ul {
+      flex-direction: column;
+      gap: 10px;
+    } */
+  
+    .login {
+      width: 95%;
+      padding: 25px;
+    }
+  
+    .h1 {
+      font-size: 1.8rem;
+    }
+  
+    .login input {
+      font-size: 14px;
+    }
+  
+    .log-btn {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    nav {
+      padding: 0.5rem 0;
+    }
+  
+    /* nav ul {
+      flex-direction: column;
+      padding: 0;
+    } */
+  
+    nav ul li a {
+      font-size: 1rem;
+      padding: 0.4rem 0.8rem;
+    }
+  
+    .h1 {
+      font-size: 1.6rem;
+    }
+  
+    .login input {
+      font-size: 14px;
+    }
+  
+    .log-btn {
+      font-size: 16px;
+    }
+  }
+
+  /* Floating Message */
+.floating-message {
+  position: fixed;
+  top: 85px; /* Ensures it stays below the navbar */
+  right: 10px;
+  background-color: rgba(255, 69, 58, 0.95); /* Vibrant red */
+  color: white;
+  padding: 12px 18px;
+  font-size: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000; /* Ensures it stays above other elements */
+  animation: floatEffect 3s ease-in-out infinite;
+}
+
+/* Floating left and right animation */
+@keyframes floatEffect {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-15px); }
+  100% { transform: translateX(0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .floating-message {
+    top: 65px; /* Adjusted for smaller screens */
+    right: 5px;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-message {
+    top: 55px; /* Ensures it's always visible on very small screens */
+    right: 5px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}

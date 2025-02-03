@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short URL Maker</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Short URL</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/registration">Registration</a></li>
+        </ul>
+    </nav>
+
+    <div class="floating-message">
+        ⚠️ Login page isn't ready yet. We're working on it!
+    </div>
+
+    <form class="login">
+        <h1 class="h1">Login</h1>
+        <input class="log-email" required pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" placeholder="Email" id="email" name="email" type="text">
+        <input class="log-pass" required placeholder="Password" id="password" name="password" type="password">
+        <input value="Login" class="log-btn" type="submit">
+        
+        <p class="signup-text">Don't have an account? <a href="/registration">register here</a></p>
+    </form>
+
+    <footer>
+        &copy; 2025 Short URL Maker. All rights reserved.
+    </footer>
+</body>
+</html>
+
+

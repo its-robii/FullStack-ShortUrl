@@ -1,0 +1,41 @@
+<%- include("./particals/header.ejs") %>
+
+    <div class="container">
+        <h1>Short URL Maker</h1>
+        <form class="url-input" action="http://localhost:8000/api/v1/generate/shortUrl" method="post">
+            <input required class="long-url" type="text" placeholder="Paste your long URL here" name="url" value="<%= locals.longUrl %>">
+            <button type="submit">Generate</button>
+        </form>
+        <% if (locals.error) { %>
+            <p class="error"><%= error %></p>         
+        <% } %>
+
+        <% if(locals.shortUrl){ %>
+            <div class="short-link">
+                <p>Your Short Link:</p>
+                <div class="link">
+                  <a href="<%= locals.shortUrl %>" target="_blank">
+                    <%= locals.shortUrl %>
+                  </a>
+                  <button class="copy" onclick="copyShortLick()">Copy</button>
+                </div>
+            </div>
+            <button class="backtoHome" onclick="backtoHome()">Generate New</button>
+       <% } %>
+    </div>
+    <footer>
+        &copy; 2025 Short URL Maker. All rights reserved.
+    </footer>
+
+    <script>
+           function copyShortLick () {
+                const shortUrl = document.querySelector('.link a').href;
+                navigator.clipboard.writeText(shortUrl)
+            };
+       
+            function backtoHome(){
+                window.location.pathname = "/"                
+            }
+    </script>
+</body>
+</html>
