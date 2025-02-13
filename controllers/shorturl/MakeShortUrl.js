@@ -17,7 +17,7 @@ const MakeShortUrl = async (req, res)=>{
         })
     }
     const shorted = generateShortId(url)
-     
+      
     const existUrl = await ShortUrlSchema.findOneAndUpdate({url}, {$set: {shortID: shorted}},  { new: true })
 
     if(existUrl){

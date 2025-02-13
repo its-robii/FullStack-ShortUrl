@@ -13,6 +13,10 @@ const RegistrationSchema = new Schema({
   password: {
     type: String,
     required: true
+  },
+  shortUrls : {
+    ref : "ShortUrl",
+    type : Schema.Types.ObjectId
   }
 });
 
