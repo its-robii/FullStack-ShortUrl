@@ -3,7 +3,7 @@ const RegistrationSchema = require("../../modal/RegistrationSchema");
 const bcrypt = require("bcrypt");
 var jwt = require('jsonwebtoken');
 const loginUser = async (req, res)=>{
-
+        // Rjhds&hf1
     try {
       const {email, password} = req.body 
 
@@ -42,7 +42,7 @@ const loginUser = async (req, res)=>{
         fullName : existUser.fullName
       }
       
-      res.status(200).cookie("acces_token",acces_token).send({massage : " login succssefull", acces_token, loggedUser })
+      res.status(200).cookie("acces_token",acces_token).redirect("/")
     } catch (error) {
       return res.status(400).send({error : "Server side error! please try again"});
     }

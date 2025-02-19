@@ -9,7 +9,7 @@ const router = express.Router();
 router.use(process.env.BASE_API_URL, apiRoute)
 
 
-router.get('/', homePage);
+router.get('/', validateUser, homePage);
 
 router.get('/login', loginPage);
 router.get('/registration', registrationPage);
@@ -18,7 +18,6 @@ router.get("/dashboard", validateUser, async (req, res) => {
 })
 
 router.get("/:shortId", renderUrl)
-router.get("/visithistory/:shortId", visitHistory)
 
 router.use((req, res)=>{
     res.render("error")

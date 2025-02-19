@@ -43,9 +43,7 @@ const registration = async (req, res) => {
 
       registrationData.save();
 
-      res.send({
-        massage: "registration successfull",
-      });
+      res.redirect("/login")
     });
 
   } catch (error) {

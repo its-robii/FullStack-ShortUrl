@@ -10,9 +10,9 @@ const shortUrl = new Schema({
     type: String,
     required: true
   },
-  author : {
-     ref : "user",
-     type : Schema.Types.ObjectId
+  isAuth : {
+    type : Boolean,
+    default : false
   },
   visitHistory: [
     {
