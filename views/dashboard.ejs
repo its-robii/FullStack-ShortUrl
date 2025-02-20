@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short URL Maker</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Short URL</a></li>
+            <% if (locals.loggedUser) { %>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><button class="Logout" onclick="handleLogout()">Logout</button></li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/registration">Registration</a></li>
+           <% } %>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <% if (locals.urlHistory) { %>
+            <div class="user-info">
+                <h1 class="fullName"><%= urlHistory.fullName %></h1>
+                <p class="email-p"><%= urlHistory.email %></p>
+   
+            </div>
+              <% urlHistory.shortUrls.forEach(element => { %>
+                    <div class="url-box">
+                    <p><strong>Original URL:</strong> <a class="short-url" href="<%= element.url %>" target="_blank"><%= element.url %></a></p>
+                    <p><strong>Short Url:<a class="short-id">http://localhost:8000/<%= element.shortID %></a></strong></p>
+                    <p class="Total"><strong>Total Visit: <%= element.visitHistory.length %> </strong></p>
+                    <p><strong>Visit History:</strong></p>
+                    <ul class="history-li">
+                        <% element.visitHistory.forEach(item => { %>
+                            <li><%= item.clickedAt.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+                <% }) %>
+        <% } %>
+    </div>
+
+    <footer>
+        &copy; 2025 Short URL Maker. All rights reserved.
+    </footer>
+
+    <script>
+  async function handleLogout() {
+    try {
+        const response = await fetch("http://localhost:8000/logout", {
+            method: "POST",
+            credentials: "include"
+        });
+
+        if (response.ok) {
+            window.location.href = "/";
+        } else {
+            console.error("Logout failed:", await response.text());
+        }
+    } catch (error) {
+        console.error("Logout failed:", error);
+    }
+}
+    </script>

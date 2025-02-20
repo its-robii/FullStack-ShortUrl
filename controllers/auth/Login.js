@@ -36,13 +36,14 @@ const loginUser = async (req, res)=>{
         }
       }, process.env.JWT_KEY, { expiresIn: '1d' });
 
-      const loggedUser = {
-        id : existUser._id,
-        email : existUser.email,
-        fullName : existUser.fullName
-      }
       
-      res.status(200).cookie("acces_token",acces_token).redirect("/")
+      res.cookie("acces_token", acces_token, {
+        httpOnly: true,    
+        secure: false,     
+        sameSite: "Lax",   
+        path: "/"          
+      });
+      res.status(200).redirect("/");
     } catch (error) {
       return res.status(400).send({error : "Server side error! please try again"});
     }

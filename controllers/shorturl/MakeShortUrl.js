@@ -45,7 +45,8 @@ const MakeShortUrl = async (req, res)=>{
                 res.render("index", {
                     message: "Short Url created successfully!",
                     longUrl: shortUrl.url,
-                    shortUrl: `http://localhost:8000/${shortUrl.shortID}`
+                    shortUrl: `http://localhost:8000/${shortUrl.shortID}`,
+                    loggedUser : req.user 
                 })  
         
             } else {
