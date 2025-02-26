@@ -8,47 +8,56 @@ const registration = async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
 
+    let errors = [];
+
     if (!fullName) {
-      return res.status(400).send({error : "Name is required"});
+      errors.push("Name is required");
     }
     if (!email) {
-      return res.status(400).send({error : "email is required"});
-    }
-    if (!validateEmail(email)) {
-      return res.status(400).send({error : "email is not valid"});
+      errors.push("Email is required");
+    } else if (!validateEmail(email)) {
+      errors.push("Email is not valid");
     }
     if (!password) {
-      return res.status(400).send({error : "password is required"});
-    }
-
-    const passwordResult = validatePassword(password);
-
-    if (passwordResult) {
-      return res.status(400).send({error : passwordResult});
+      errors.push("Password is required");
+    } else {
+      const passwordResult = validatePassword(password);
+      if (passwordResult) {
+        errors.push(passwordResult);
+      }
     }
 
     const existingUser = await RegistrationSchema.findOne({ email });
-
     if (existingUser) {
-      return res.status(400).send({error: "This email is already registered ! try with another one" });
+      errors.push("This email is already registered! Try with another one.");
     }
 
-    bcrypt.hash(password, saltRounds, function (err, hash) {
+    // If there are errors, re-render the registration page with the errors
+    if (errors.length > 0) {
+      return res.render("registration", { baseUrl: process.env.BASE_URL || "http://localhost:10000", errors });
+    }
 
-      const registrationData = RegistrationSchema({
+    // Hash the password and save the user
+    bcrypt.hash(password, saltRounds, async function (err, hash) {
+      if (err) {
+        return res.render("registration", { baseUrl, errors: ["Error hashing password! Please try again."] });
+      }
+
+      const registrationData = new RegistrationSchema({
         fullName,
         email,
-        password : hash,
+        password: hash,
       });
 
-      registrationData.save();
+      await registrationData.save();
 
-      res.redirect("/login")
+      res.redirect("/login");
     });
 
   } catch (error) {
-    return res.status(400).send({error : "Server side error! please try again"});
+    return res.render("registration", { baseUrl, errors: ["Server side error! Please try again."] });
   }
 };
 
 module.exports = registration;
+

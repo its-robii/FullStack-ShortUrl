@@ -14,13 +14,24 @@
             <li><a href="/registration">Registration</a></li>
         </ul>
     </nav>
-    <form class="login" action="<%= locals.baseUrl %>/api/v1/auth/login" method="post">
+
+    <form class="login" action="<%= baseUrl %>/api/v1/auth/login" method="post">
         <h1 class="h1">Login</h1>
+
+        <!-- Display Errors -->
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <div class="error-box">
+                <% errors.forEach(function(error) { %>
+                    <p class="error-message"><%= error %></p>
+                <% }) %>
+            </div>
+        <% } %>
+
         <input class="log-email" required pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" placeholder="Email" id="email" name="email" type="text">
         <input class="log-pass" required placeholder="Password" id="password" name="password" type="password">
         <input value="Login" class="log-btn" type="submit">
-        
-        <p class="signup-text">Don't have an account? <a href="/registration">register here</a></p>
+
+        <p class="signup-text">Don't have an account? <a href="/registration">Register here</a></p>
     </form>
 
     <footer>
@@ -28,5 +39,6 @@
     </footer>
 </body>
 </html>
+
 
 

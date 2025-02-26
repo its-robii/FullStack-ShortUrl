@@ -4,6 +4,7 @@ const homePage = (req, res) => {
     res.render('index',{
         loggedUser : req.user,
         baseUrl 
+        
     });
 
 }
@@ -16,9 +17,10 @@ const loginPage = (req, res) => {
 }
 
 const registrationPage = (req, res) => {
-
+    
     res.render('registration',{
-        baseUrl
+        baseUrl,
+       
     });
 
 }

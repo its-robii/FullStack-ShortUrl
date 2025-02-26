@@ -3,7 +3,7 @@ const isUrlValid = require("../../helpers/isUrlValid");
 const RegistrationSchema = require("../../modal/RegistrationSchema");
 const ShortUrlSchema = require("../../modal/ShortUrlSchema");
 // Define baseUrl ONCE at the top (remove the duplicate inside the function)
-const baseUrl = process.env.BASE_URL || "http://localhost:8000";
+const baseUrl = process.env.BASE_URL || "http://localhost:10000";
 
 const MakeShortUrl = async (req, res) => {
   try {
