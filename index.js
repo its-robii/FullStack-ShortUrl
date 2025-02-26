@@ -14,4 +14,11 @@ dbConnect()
 
 
 
-app.listen(8000, ()=> console.log("Server running"))
+
+// app.listen(8000, ()=> console.log("Server running"))
+
+const PORT = process.env.PORT || 8000; // Render sets PORT dynamically
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

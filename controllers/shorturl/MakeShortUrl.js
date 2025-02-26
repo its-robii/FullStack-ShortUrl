@@ -2,9 +2,11 @@ const generateShortId = require("../../helpers/generateShortId");
 const isUrlValid = require("../../helpers/isUrlValid");
 const RegistrationSchema = require("../../modal/RegistrationSchema");
 const ShortUrlSchema = require("../../modal/ShortUrlSchema");
+const baseUrl = process.env.BASE_URL || "http://localhost:8000";
 
 
 const MakeShortUrl = async (req, res)=>{
+    const baseUrl = process.env.BASE_URL || "http://localhost:8000";
         try {
             const {url} = req.body;
   
@@ -27,7 +29,7 @@ const MakeShortUrl = async (req, res)=>{
                     return res.render("index", {
                         message: "Short Url created successfully!",
                         longUrl: existUrl.url,
-                        shortUrl: `http://localhost:8000/${existUrl.shortID}`,
+                        shortUrl: `${process.env.BASE_URL|| baseUrl}${existUrl.shortID}`,
                         loggedUser : req.user 
                     })
                 }
@@ -45,7 +47,7 @@ const MakeShortUrl = async (req, res)=>{
                 res.render("index", {
                     message: "Short Url created successfully!",
                     longUrl: shortUrl.url,
-                    shortUrl: `http://localhost:8000/${shortUrl.shortID}`,
+                    shortUrl: `${process.env.BASE_URL|| baseUrl}/${shortUrl.shortID}`,
                     loggedUser : req.user 
                 })  
         
@@ -57,7 +59,7 @@ const MakeShortUrl = async (req, res)=>{
                 return res.render("index", {
                     message: "Short Url created successfully!",
                     longUrl: existUrl.url,
-                    shortUrl: `http://localhost:8000/${existUrl.shortID}`
+                    shortUrl: `${process.env.BASE_URL|| baseUrl}}/${existUrl.shortID}`
                 })
             }
          
@@ -71,7 +73,7 @@ const MakeShortUrl = async (req, res)=>{
             res.render("index", {
                 message: "Short Url created successfully!",
                 longUrl: shortUrl.url,
-                shortUrl: `http://localhost:8000/${shortUrl.shortID}`
+                shortUrl: `${process.env.BASE_URL|| baseUrl}/${shortUrl.shortID}`
             })
           }
         } catch (error) {
