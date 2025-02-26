@@ -15,7 +15,7 @@
         </ul>
     </nav>
 
-        <form class="login"  action="http://localhost:8000/api/v1/auth/registration" method="post">
+        <form class="login"  action="<%= locals.baseUrl %>/api/v1/auth/registration" method="post">
             <h1 class="h1">Registration</h1>
             <input class="log-pass" required placeholder="Full Name" id="fullName" name="fullName" type="text">
             <input class="log-email" required pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" placeholder="Email" id="email" name="email" type="text">

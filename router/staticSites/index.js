@@ -7,13 +7,17 @@ const homePage = (req, res) => {
 }
 const loginPage = (req, res) => {
 
-    res.render('login');
+    res.render('login',{
+        baseUrl
+    });
 
 }
 
 const registrationPage = (req, res) => {
 
-    res.render('registration');
+    res.render('registration',{
+        baseUrl
+    });
 
 }
 
