@@ -5,6 +5,7 @@ const { homePage, loginPage, registrationPage } = require('./staticSites');
 const validateUser = require('../Middlewares/authMiddleware');
 const RegistrationSchema = require('../modal/RegistrationSchema');
 const router = express.Router();
+const baseUrl = process.env.BASE_URL || "http://localhost:8000";
 
 
 router.use(process.env.BASE_API_URL, apiRoute)
@@ -20,7 +21,8 @@ router.get("/dashboard", validateUser, async (req, res) => {
         const userData = await RegistrationSchema.findById(req.user.id).select("-password").populate("shortUrls")
         res.render("dashboard", {
             urlHistory : userData, 
-            loggedUser : req.user  
+            loggedUser : req.user ,
+            baseUrl 
         })
     }else {
         res.redirect("/")
