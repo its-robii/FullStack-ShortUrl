@@ -39,11 +39,12 @@ const loginUser = async (req, res)=>{
       
       res.cookie("acces_token", acces_token, {
         httpOnly: true,    
-        secure: false,     
+        secure: process.env.NODE_ENV === "production",  
         sameSite: "Lax",   
         path: "/"          
-      });
-      res.status(200).redirect("/");
+    });
+    res.status(200).redirect("/");
+    
     } catch (error) {
       return res.status(400).send({error : "Server side error! please try again"});
     }

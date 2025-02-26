@@ -48,20 +48,21 @@
     </footer>
 
     <script>
-  async function handleLogout() {
-    try {
-        const response = await fetch("http://localhost:8000/logout", {
-            method: "POST",
-            credentials: "include"
-        });
-
-        if (response.ok) {
-            window.location.href = "/";
-        } else {
-            console.error("Logout failed:", await response.text());
+        async function handleLogout() {
+          try {
+              const response = await fetch("<%= baseUrl %>/logout", { 
+                  method: "POST",
+                  credentials: "include"
+              });
+      
+              if (response.ok) {
+                  window.location.href = "/";
+              } else {
+                  console.error("Logout failed:", await response.text());
+              }
+          } catch (error) {
+              console.error("Logout failed:", error);
+          }
         }
-    } catch (error) {
-        console.error("Logout failed:", error);
-    }
-}
-    </script>
+      </script>
+      

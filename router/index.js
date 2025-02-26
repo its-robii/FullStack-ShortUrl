@@ -29,12 +29,13 @@ router.get("/dashboard", validateUser, async (req, res) => {
 router.post('/logout', (req, res) => {
     res.clearCookie("acces_token", {
         httpOnly: true, 
-        secure: false,  
+        secure: process.env.NODE_ENV === "production",  // Secure only in production
         sameSite: "Lax",
         path: "/"
     });
     res.status(200).json({ message: "Logged out successfully" });
 });
+
 router.get("/:shortId", renderUrl)
 
 router.use((req, res)=>{
