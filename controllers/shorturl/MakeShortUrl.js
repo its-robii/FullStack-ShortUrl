@@ -31,6 +31,7 @@ const MakeShortUrl = async (req, res) => {
           longUrl: existUrl.url,
           // Use baseUrl directly (no need for process.env.BASE_URL)
           shortUrl: `${baseUrl}/${existUrl.shortID}`, // Add missing `/`
+          baseUrl,
           loggedUser: req.user,
         });
       }
@@ -51,6 +52,7 @@ const MakeShortUrl = async (req, res) => {
         longUrl: shortUrl.url,
         shortUrl: `${baseUrl}/${shortUrl.shortID}`, // Fixed
         loggedUser: req.user,
+        baseUrl
       });
     } else {
       const existUrl = await ShortUrlSchema.findOneAndUpdate(
@@ -64,6 +66,7 @@ const MakeShortUrl = async (req, res) => {
           message: "Short Url created successfully!",
           longUrl: existUrl.url,
           shortUrl: `${baseUrl}/${existUrl.shortID}`, // Fixed extra `}`
+          baseUrl
         });
       }
 
@@ -78,6 +81,7 @@ const MakeShortUrl = async (req, res) => {
         message: "Short Url created successfully!",
         longUrl: shortUrl.url,
         shortUrl: `${baseUrl}/${shortUrl.shortID}`, // Fixed
+        baseUrl
       });
     }
   } catch (error) {

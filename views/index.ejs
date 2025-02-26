@@ -2,7 +2,7 @@
 
     <div class="container">
         <h1>Short URL Maker</h1>
-        <form class="url-input" action="http://localhost:8000/api/v1/generate/shortUrl" method="post">
+        <form class="url-input" action="<%= locals.baseUrl %>/api/v1/generate/shortUrl" method="post">
             <input required class="long-url" type="text" placeholder="Paste your long URL here" name="url" value="<%= locals.longUrl %>">
             <button type="submit">Generate</button>
         </form>
@@ -39,3 +39,5 @@
     </script>
 </body>
 </html>
+
+<!-- http://localhost:8000/api/v1/generate/shortUrl -->
