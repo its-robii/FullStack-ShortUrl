@@ -1,3 +1,4 @@
+const baseUrl = process.env.BASE_URL || "http://localhost:10000";
 const homePage = (req, res) => {
 
     res.render('index',{
