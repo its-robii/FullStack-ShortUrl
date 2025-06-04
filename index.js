@@ -17,7 +17,7 @@ dbConnect()
 
 // app.listen(8000, ()=> console.log("Server running"))
 
-const PORT = process.env.PORT || 10000; // Use Render's assigned port if available
+const PORT = process.env.PORT || 10000; 
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
